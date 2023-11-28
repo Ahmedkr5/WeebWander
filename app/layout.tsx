@@ -19,12 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${dmSans.className}`}>
-        <NavBar />
-        <main className="max-w-7xl mx-auto bg-body">
-          <Hero />
+        <NavBar />  
           {children}
-          <Footer />
-        </main>
+        <Footer />
       </body>
     </html>
   );

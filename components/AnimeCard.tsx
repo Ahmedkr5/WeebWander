@@ -25,7 +25,9 @@ function AnimeCard({ anime, index }: Prop) {
           src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           fill
-          className="rounded-xl"
+          sizes="(max-width: 600px) 100vw, (max-width: 960px) 75vw, 1200px"
+          className="rounded-xl max-w-full"
+          
         />
       </div>
       <div className="py-4 flex flex-col gap-3">

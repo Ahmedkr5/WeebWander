@@ -17,6 +17,9 @@ const config: Config = {
       backgroundColor: {
         body: "#0F1117",
       },
+      backgroundPosition: {
+        hero: "center 20%",
+      },
     },
   },
   plugins: [],
