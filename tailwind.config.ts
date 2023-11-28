@@ -15,7 +15,7 @@ const config: Config = {
         hero: 'url("/hero.png")',
       },
       backgroundColor: {
-        'body': '#0F1117',
+        body: "#0F1117",
       },
     },
   },

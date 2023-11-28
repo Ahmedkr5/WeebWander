@@ -2,7 +2,14 @@
 
 import { CustomButtonProps } from "@/types";
 
-const Button = ({ isDisabled, btnType, containerStyles, textStyles, title, handleClick }: CustomButtonProps) => (
+const Button = ({
+  isDisabled,
+  btnType,
+  containerStyles,
+  textStyles,
+  title,
+  handleClick,
+}: CustomButtonProps) => (
   <button
     disabled={isDisabled}
     type={btnType || "button"}
