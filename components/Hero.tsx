@@ -6,8 +6,8 @@ function Hero() {
       <div className="flex-1 flex flex-col gap-10">
    
         <h1 className="sm:text-6xl text-5xl text-white lg:max-w-lg font-bold leading-[120%]">
-          Navigate The <span className="red-gradient">World of Anime</span> when
-          unsure what to watch
+          Navigate The <span className="indigo-gradient">World of Anime</span> When
+          Unsure What To Watch!
         </h1>
       </div>
       <div className="lg:flex-1 relative w-full h-[50vh] justify-center">

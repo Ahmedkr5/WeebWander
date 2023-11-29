@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 
-export interface AnimeProp {
+export type AnimeProp= {
   id: string;
   name: string;
   image: {
@@ -13,12 +13,12 @@ export interface AnimeProp {
   score: string;
 }
 
-export interface Prop {
+export type Prop ={
   anime: AnimeProp;
   index: number;
 }
 
-export interface CustomButtonProps {
+export type CustomButtonProps= {
   isDisabled?: boolean;
   btnType?: "button" | "submit";
   containerStyles?: string;
@@ -26,4 +26,10 @@ export interface CustomButtonProps {
   title: string;
   rightIcon?: string;
   handleClick?: MouseEventHandler<HTMLButtonElement>;
+}
+
+export type CustomDialogProps={
+  isOpen: boolean;
+  closeModal: () => void;
+  title: string;
 }

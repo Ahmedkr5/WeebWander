@@ -12,10 +12,15 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
+.indigo-gradient {
+  background: linear-gradient(92deg, #3f51b5 2.87%, #6574cd 96.18%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 :root {
   color-scheme: dark;
 }
 .custom-btn {
-  @apply flex flex-row relative justify-center items-center py-3 px-6 outline-none;
+  @apply flex flex-row relative justify-center items-center  outline-none;
 }
