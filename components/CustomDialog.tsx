@@ -52,7 +52,7 @@ const CustomDialog = ({isOpen,closeModal,title}: CustomDialogProps) => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -68,17 +68,22 @@ const CustomDialog = ({isOpen,closeModal,title}: CustomDialogProps) => {
                   </a>
                 </div>
               </div>
-              <div className="mt-2">
+              <div className="relative w-full mt-2">
+              <div className="absolute inset-y-0 right-0 flex items-center px-2">
+              <input className="hidden" id="toggle" type="checkbox" />
+      <label className="bg-gray-800 hover:bg-gray-700 rounded px-2 py-1 text-sm text-white font-mono cursor-pointer" htmlFor="toggle">show</label>
+      </div>
                 <input
                   id="password"
                   name="password"
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-800 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
+              </div>
+           
 
             <div>
               <CustomButton
