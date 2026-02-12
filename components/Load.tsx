@@ -1,25 +1,29 @@
 "use client";
+
 import { fetchAnime } from "@/app/action";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import AnimeCard from "./AnimeCard";
 
-//let page = 2;
-export type AnimeCard = JSX.Element;
+type AnimeCardEl = JSX.Element;
 
-function Load() {
-  const { ref, inView } = useInView();
-  const [data, setData] = useState<AnimeCard[]>([]);
-  const [page, setPage] = useState(2)
+export default function Load() {
+  const { ref, inView } = useInView({ threshold: 0 });
+  const [data, setData] = useState<AnimeCardEl[]>([]);
+  const [page, setPage] = useState(2);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    if (inView) {
-      fetchAnime(page).then((res) => {
-        setData([...data, ...res]);
-        setPage(page+1);
-      });
-    }
-  }, [inView, data]);
+    if (!inView || loading) return;
+
+    setLoading(true);
+    fetchAnime(page)
+      .then((res) => {
+        setData((prev) => [...prev, ...res]);
+        setPage((prev) => prev + 1);
+      })
+      .finally(() => setLoading(false));
+  }, [inView, page, loading]);
 
   return (
     <>
@@ -28,17 +32,9 @@ function Load() {
       </section>
       <section className="flex justify-center items-center w-full">
         <div ref={ref}>
-          <Image
-            src="./spinner.svg"
-            alt="spinner"
-            width={56}
-            height={56}
-            className="object-contain"
-          />
+          <Image src="./spinner.svg" alt="spinner" width={56} height={56} className="object-contain" />
         </div>
       </section>
     </>
   );
 }
-
-export default Load;
