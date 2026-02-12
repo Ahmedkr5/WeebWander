@@ -6,63 +6,56 @@ const variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
+
 function AnimeCard({ anime, index }: Prop) {
+  const episodes = anime.episodes || anime.episodes_aired || "—";
+  const kind = anime.kind || "TV";
+  const score = anime.score ?? "—";
+
   return (
     <MotionDiv
       variants={variants}
       initial="hidden"
       animate="visible"
-      transition={{
-        delay: index * 0.25,
-        ease: "easeInOut",
-        duration: 0.5,
-      }}
-      viewport={{ amount: 0 }}
-      className="max-w-sm rounded relative w-full"
+      transition={{ delay: index * 0.08, ease: "easeInOut", duration: 0.45 }}
+      viewport={{ amount: 0.2, once: true }}
+      className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07]"
     >
-      <div className="relative w-full h-[37vh]">
+      {/* Poster */}
+      <div className="relative w-full aspect-[3/4]">
         <Image
           src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           fill
-          sizes="(max-width: 600px) 100vw, (max-width: 960px) 75vw, 1200px"
-          className="rounded-xl max-w-full"
-          
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+          priority={index < 4}
         />
-      </div>
-      <div className="py-4 flex flex-col gap-3">
-        <div className="flex justify-between items-center gap-1">
-          <h2 className="font-bold text-white text-xl line-clamp-1 w-full">
-            {anime.name}
-          </h2>
-          <div className="py-1 px-2 bg-[#161921] rounded-sm">
-            <p className="text-white text-sm font-bold capitalize">
-              {anime.kind}
-            </p>
-          </div>
+
+        {/* Top badges */}
+        <div className="absolute left-3 top-3 flex items-center gap-2">
+          <span className="rounded-full bg-black/50 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur">
+            {kind.toUpperCase()}
+          </span>
+          <span className="rounded-full bg-black/50 px-2.5 py-1 text-xs font-semibold text-amber-300 backdrop-blur">
+            ★ {score}
+          </span>
         </div>
-        <div className="flex gap-4 items-center">
-          <div className="flex flex-row gap-2 items-center">
-            <Image
-              src="./episodes.svg"
-              alt="episodes"
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            <p className="text-base text-white font-bold">
-              {anime.episodes || anime.episodes_aired}
-            </p>
-          </div>
-          <div className="flex flex-row gap-2 items-center">
-            <Image
-              src="./star.svg"
-              alt="star"
-              width={18}
-              height={18}
-              className="object-contain"
-            />
-            <p className="text-base font-bold text-[#FFAD49]">{anime.score}</p>
+
+        {/* Bottom overlay */}
+        <div className="absolute inset-x-0 bottom-0 p-4">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          <div className="relative">
+            <h2 className="text-lg font-semibold text-white line-clamp-1">
+              {anime.name}
+            </h2>
+            <div className="mt-2 flex items-center justify-between text-sm text-white/80">
+              <span className="flex items-center gap-2">
+                <Image src="/episodes.svg" alt="episodes" width={18} height={18} />
+                {episodes}
+              </span>
+<span className="text-white/60">{anime.status?.toUpperCase?.() ?? ""}</span>
+            </div>
           </div>
         </div>
       </div>

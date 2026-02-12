@@ -11,6 +11,7 @@ export type AnimeProp= {
   episodes: number;
   episodes_aired: number;
   score: string;
+  status: string
 }
 
 export type Prop ={
